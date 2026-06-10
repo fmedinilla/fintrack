@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinTrack</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="main-container">
+        <section class="section section--header">
+            <h1 class="header__title">FinTrack</h1>
+            <p class="header__subtitle">Gestiona tus finanzas con el método 50/30/20</p>
+        </section>
+
+        <section class="section section--income">
+            <h2 class="income-section__title">Ingreso mensual</h2>
+            <div class="income-section__container">
+                <input class="income-section__input" type="number" min="0" step="0.01">
+                <button class="income-section__button">Guardar</button>
+            </div>
+            
+        </section>
+
+        <section class="section section--budget">
+            <h2 class="budget-section__title">Presupuesto</h2>
+            <p class="budget-section__amount">1.432,57 <span class="budget-section__currency">€</span></p>
+            <div class="budget-section__container">
+                <article class="budget-card budget-card--needs">
+                    <h3 class="budget-card__name">Necesidades <span class="budget-card__percentage">50%</span></h3>
+                    <p class="budget-card__amount">716,29 <span class="budget-card__currency">€</span></p>
+                </article>
+
+                <article class="budget-card budget-card--wants">
+                    <h3 class="budget-card__name">Deseos <span class="budget-card__percentage">30%</span></h3>
+                    <p class="budget-card__amount">429,77 <span class="budget-card__currency">€</span></p>
+                </article>
+
+                <article class="budget-card budget-card--savings">
+                    <h3 class="budget-card__name">Ahorro <span class="budget-card__percentage">20%</span></h3>
+                    <p class="budget-card__amount">286,51 <span class="budget-card__currency">€</span></p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section section--expenses">
+            <h2 class="expenses-section__title">Gastos</h2>
+
+            <form class="expenses-form">
+                <div class="expenses-form__group">
+                    <label class="expenses-form__label">Categoría:</label>
+                    <select class="expenses-form__select">
+                        <option class="expenses-form__option" value="needs">Necesidades</option>
+                        <option class="expenses-form__option" value="wants">Deseos</option>
+                        <option class="expenses-form__option" value="savings">Ahorro</option>
+                    </select>
+                </div>
+
+                <div class="expenses-form__group">
+                    <label class="expenses-form__label">Monto:</label>
+                    <input class="expenses-form__input" type="number">
+                </div>
+
+                <div class="expenses-form__group">
+                    <button class="expenses-form__button" type="submit">Agregar gasto</button>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>
