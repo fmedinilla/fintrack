@@ -1,0 +1,123 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+.main-container {
+    max-width: 700px;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.section {
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section--header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.budget-section__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.income-section__input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+}
+
+.budget-card {
+    background-color: #f4f4f4;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    text-align: center;
+}
+
+.budget-card__title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.budget-card__amount {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.budget-card__currency {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+.budget-card--needs {
+    border-top: 4px solid #e74c3c;
+}
+
+.budget-card--wants {
+    border-top: 4px solid #f39c12;
+}
+
+.budget-card--savings {
+    border-top: 4px solid #28a745;
+}
+
+.expenses-form {
+    background-color: #f4f4f4;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.expenses-form__group {
+    margin-bottom: 1rem;
+}
+
+.expenses-form__label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.expenses-form__input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+}
+
+.expenses-form__select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+}
+
+.expenses-form__button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
