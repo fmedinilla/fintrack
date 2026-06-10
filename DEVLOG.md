@@ -1,0 +1,2 @@
+# Diario de Desarrollo (Devlog) - Fintrack
+*Este documento servirá como registro del proceso de creación de Fintrack. Aquí documentaré los desafios tecnicos, las soluciones encontradas, los errores superados y el aprendizaje diario durante el desarrollo del proyecto.*
