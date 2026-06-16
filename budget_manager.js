@@ -13,7 +13,7 @@ class BudgetManager {
     static SAVING_PERCENT = 0.2;
 
     onRender = () => {
-        console.log("render");
+        
     }
 
     constructor(onRender) {
@@ -51,7 +51,6 @@ class BudgetManager {
 
     render() {
         const data = this.getBudget();
-        console.log(data);
         this.onRender(data);
     }
 
