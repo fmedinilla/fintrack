@@ -1,17 +1,9 @@
 const $incomeInput = document.querySelector(".income-section__input");
 const $saveIncomeBtn = document.querySelector(".income-section__button");
-
 const $totalBudget = document.querySelector(".budget-section__amount");
 const $needsBudget = document.querySelector(".budget-card--needs .budget-card__amount");
 const $wantsBudget = document.querySelector(".budget-card--wants .budget-card__amount");
 const $savingsBudget = document.querySelector(".budget-card--savings .budget-card__amount");
-
-function formatCurrency(number) {
-    return new Intl.NumberFormat('de-DE', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-    }).format(number);
-}
 
 function setAmount($element, amount) {
     const $currencySymbol = $element.querySelector("span");
@@ -19,7 +11,14 @@ function setAmount($element, amount) {
     $element.appendChild($currencySymbol);
 }
 
-function handleIncomeInput() {
+function renderBudget({ income, needs, wants, saving }) {
+    setAmount($totalBudget, income);
+    setAmount($needsBudget, needs);
+    setAmount($wantsBudget, wants);
+    setAmount($savingsBudget, saving);
+}
+
+function handleIncomeInput(budgetManager) {
     const income = parseFloat($incomeInput.value);
 
     if (isNaN(income) || income <= 0) {
@@ -27,27 +26,23 @@ function handleIncomeInput() {
         return;
     }
 
-    const needs = income * 0.5;
-    const wants = income * 0.3;
-    const savings = income * 0.2;
-
-    console.log({ total: needs + wants + savings })
-
-    setAmount($totalBudget, income);
-    setAmount($needsBudget, needs);
-    setAmount($wantsBudget, wants);
-    setAmount($savingsBudget, savings);
-
-    localStorage.setItem("income", income);
-    localStorage.setItem("needs", needs);
-    localStorage.setItem("wants", wants);
-    localStorage.setItem("savings", savings);
+    budgetManager.setIncome(income);
+    budgetManager.saveData();
 }
 
-$saveIncomeBtn.addEventListener("click", handleIncomeInput);
-$incomeInput.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-        event.preventDefault();
-        handleIncomeInput();
-    }
-});
+function main() {
+    const budgetManager = new BudgetManager(renderBudget);
+    budgetManager.loadData();
+
+    $saveIncomeBtn.addEventListener("click", () => handleIncomeInput(budgetManager));
+    $incomeInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            handleIncomeInput(budgetManager);
+        }
+    });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    main();
+})
