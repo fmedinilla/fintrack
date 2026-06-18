@@ -4,6 +4,9 @@ const $totalBudget = document.querySelector(".budget-section__amount");
 const $needsBudget = document.querySelector(".budget-card--needs .budget-card__amount");
 const $wantsBudget = document.querySelector(".budget-card--wants .budget-card__amount");
 const $savingsBudget = document.querySelector(".budget-card--savings .budget-card__amount");
+const $expenseCategorySelect = document.querySelector(".expenses-form__select");
+const $expenseAmountInput = document.querySelector(".expenses-form__input");
+const $addExpenseBtn = document.querySelector(".expenses-form__button");
 
 function setAmount($element, amount) {
     const $currencySymbol = $element.querySelector("span");
@@ -30,9 +33,25 @@ function handleIncomeInput(budgetManager) {
     budgetManager.saveData();
 }
 
+function handleExpenseInput(expensesManager, budgetManager) {
+    const category = $expenseCategorySelect.value;
+    const amount = parseFloat($expenseAmountInput.value);
+
+    if (isNaN(amount) || amount <= 0) {
+        alert("Please enter a valid expense amount.");
+        return;
+    }
+
+    expensesManager.addExpense({ category, amount });
+    budgetManager.updateBudget(expensesManager.expenses);
+}
+
 function main() {
     const budgetManager = new BudgetManager(renderBudget);
+    const expensesManager = new ExpensesManager();
+
     budgetManager.loadData();
+    expensesManager.loadData();
 
     $saveIncomeBtn.addEventListener("click", () => handleIncomeInput(budgetManager));
     $incomeInput.addEventListener("keydown", (event) => {
@@ -41,6 +60,12 @@ function main() {
             handleIncomeInput(budgetManager);
         }
     });
+    $addExpenseBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        handleExpenseInput(expensesManager, budgetManager);
+    });
+
+    budgetManager.updateBudget(expensesManager.expenses);
 }
 
 document.addEventListener("DOMContentLoaded", () => {

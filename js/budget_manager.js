@@ -33,6 +33,28 @@ class BudgetManager {
         this.saving = this.income * BudgetManager.SAVING_PERCENT;
     }
 
+    updateBudget(expenses) {
+        const expenseNeeds = expenses
+            .filter(expense => expense.category === NEEDS)
+            .reduce((sum, expense) => sum + expense.amount, 0);
+
+        const expenseWants = expenses
+            .filter(expense => expense.category === WANTS)
+            .reduce((sum, expense) => sum + expense.amount, 0);
+
+        const expenseSavings = expenses
+            .filter(expense => expense.category === SAVINGS)
+            .reduce((sum, expense) => sum + expense.amount, 0);
+
+        this.loadData();
+
+        this.needs -= expenseNeeds;
+        this.wants -= expenseWants;
+        this.saving -= expenseSavings;
+
+        this.render();
+    }
+
     saveData() {
         localStorage.setItem(INCOME, this.income);
         localStorage.setItem(NEEDS, this.needs);
