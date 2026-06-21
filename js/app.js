@@ -19,6 +19,7 @@ const $budgetView = {
     wantsBudget: document.querySelector(".budget-card--wants .budget-card__amount"),
     savingsBudget: document.querySelector(".budget-card--savings .budget-card__amount")
 };
+const $resetBudgetButton = document.querySelector(".budget-section__reset-button");
 const $expenseListView = {
     list: document.querySelector(".expense-list"),
     emptyState: document.querySelector(".expense-list__empty")
@@ -76,6 +77,29 @@ function handleExpenseSubmit(event) {
     renderDashboard();
 }
 
+function handleBudgetReset() {
+    const firstConfirmation = window.confirm("Esto borrará el ingreso y todos los gastos guardados. ¿Quieres continuar?");
+
+    if (!firstConfirmation) {
+        return;
+    }
+
+    const secondConfirmation = window.confirm("Última confirmación: el reinicio es definitivo. ¿Seguro que quieres borrar todo?");
+
+    if (!secondConfirmation) {
+        return;
+    }
+
+    incomeRepository.clear();
+    expensesRepository.clear();
+    budgetService.load();
+    expensesService.load();
+
+    $incomeInput.value = "";
+    $expenseAmountInput.value = "";
+    renderDashboard();
+}
+
 function bootstrap() {
     budgetService.load();
     expensesService.load();
@@ -83,6 +107,7 @@ function bootstrap() {
     setupExpenseTabs($expenseTabs, $expensePanels);
     $incomeForm.addEventListener("submit", handleIncomeSubmit);
     $expensesForm.addEventListener("submit", handleExpenseSubmit);
+    $resetBudgetButton.addEventListener("click", handleBudgetReset);
 
     renderDashboard();
 }
