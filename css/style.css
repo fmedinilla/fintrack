@@ -71,6 +71,11 @@ body {
     text-align: center;
 }
 
+.budget-amount--negative .budget-section__currency,
+.budget-amount--negative .budget-card__currency {
+    color: #e74c3c;
+}
+
 .budget-card {
     background-color: #f4f4f4;
     padding: 1rem;
@@ -90,6 +95,10 @@ body {
     font-size: 1.5rem;
     font-weight: bold;
     color: #333;
+}
+
+.budget-amount--negative {
+    color: #e74c3c;
 }
 
 .budget-card__currency {
@@ -283,6 +292,10 @@ body {
     color: #1f2d3d;
 }
 
+.expense-summary-card__amount--negative {
+    color: #e74c3c;
+}
+
 .expense-summary-card__meta,
 .expense-stat-card__meta {
     font-size: 0.9rem;
@@ -299,6 +312,11 @@ body {
 
 .expense-summary-card--savings {
     border-top: 4px solid #28a745;
+}
+
+.expense-summary-card--over-budget {
+    border-top-color: #e74c3c;
+    background: #fff5f5;
 }
 
 .expense-stat-card--highlight {

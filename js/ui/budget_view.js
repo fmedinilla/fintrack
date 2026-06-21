@@ -10,6 +10,7 @@ export function renderBudget($budgetView, budget) {
 function setAmount($element, amount) {
     const $currencySymbol = $element.querySelector("span");
 
+    $element.classList.toggle("budget-amount--negative", amount < 0);
     $element.textContent = formatCurrency(amount);
     $element.appendChild($currencySymbol);
 }

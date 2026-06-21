@@ -60,10 +60,15 @@ function handleExpenseSubmit(event) {
 
     const category = $expenseCategorySelect.value;
     const amount = parsePositiveNumber($expenseAmountInput.value);
+    const currentBudget = budgetService.getBudget(expensesService.expenses);
 
     if (amount === null || !Object.values(BUDGET_CATEGORIES).includes(category)) {
         alert("Please enter a valid expense amount.");
         return;
+    }
+
+    if (amount > currentBudget[category]) {
+        alert(`El gasto supera el presupuesto disponible para ${category}. La categoría se mostrará en rojo.`);
     }
 
     expensesService.addExpense({ category, amount });
