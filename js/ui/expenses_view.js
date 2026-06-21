@@ -65,7 +65,8 @@ function createExpenseItem(expense) {
 
 function createSummaryCard(entry) {
     const card = document.createElement("article");
-    card.className = `expense-summary-card expense-summary-card--${entry.category}`;
+    const isOverBudget = entry.amount < 0;
+    card.className = `expense-summary-card expense-summary-card--${entry.category}${isOverBudget ? " expense-summary-card--over-budget" : ""}`;
 
     const label = document.createElement("span");
     label.className = "expense-summary-card__label";
@@ -74,6 +75,7 @@ function createSummaryCard(entry) {
     const amount = document.createElement("strong");
     amount.className = "expense-summary-card__amount";
     amount.textContent = formatCurrency(entry.amount);
+    amount.classList.toggle("expense-summary-card__amount--negative", isOverBudget);
 
     const meta = document.createElement("span");
     meta.className = "expense-summary-card__meta";
