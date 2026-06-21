@@ -62,13 +62,19 @@
 
                 <div class="expenses-form__group">
                     <label class="expenses-form__label">Monto:</label>
-                    <input class="expenses-form__input" type="number">
+                    <input class="expenses-form__input" type="number" min="0" step="0.01">
                 </div>
 
                 <div class="expenses-form__group">
                     <button class="expenses-form__button" type="submit">Agregar gasto</button>
                 </div>
             </form>
+        </section>
+
+        <section class="section section--expense-list">
+            <h2 class="expense-list__title">Historial de gastos</h2>
+            <p class="expense-list__empty">Todavía no hay gastos registrados.</p>
+            <ul class="expense-list" aria-live="polite"></ul>
         </section>
     </main>
 </body>

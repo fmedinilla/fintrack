@@ -5,6 +5,7 @@ import { ExpensesRepository } from "./repositories/expenses_repository.js";
 import { BudgetService } from "./services/budget_service.js";
 import { ExpensesService } from "./services/expenses_service.js";
 import { renderBudget } from "./ui/budget_view.js";
+import { renderExpenses } from "./ui/expenses_view.js";
 
 const $incomeForm = document.querySelector(".income-section__container");
 const $incomeInput = document.querySelector(".income-section__input");
@@ -17,6 +18,10 @@ const $budgetView = {
     wantsBudget: document.querySelector(".budget-card--wants .budget-card__amount"),
     savingsBudget: document.querySelector(".budget-card--savings .budget-card__amount")
 };
+const $expenseListView = {
+    list: document.querySelector(".expense-list"),
+    emptyState: document.querySelector(".expense-list__empty")
+};
 const incomeRepository = new IncomeRepository();
 const expensesRepository = new ExpensesRepository();
 const budgetService = new BudgetService(incomeRepository);
@@ -25,6 +30,7 @@ const expensesService = new ExpensesService(expensesRepository);
 function renderDashboard() {
     const budget = budgetService.getBudget(expensesService.expenses);
     renderBudget($budgetView, budget);
+    renderExpenses($expenseListView, expensesService.expenses);
 }
 
 function handleIncomeSubmit(event) {
