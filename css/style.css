@@ -36,6 +36,14 @@ body {
     align-items: center;
 }
 
+.budget-section__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
 .income-section__container {
     display: flex;
     gap: 1rem;
@@ -55,6 +63,24 @@ body {
     border: none;
     border-radius: 0.25rem;
     cursor: pointer;
+}
+
+.budget-section__reset-button {
+    background: #fff;
+    color: #b42318;
+    border: 1px solid #f3b4af;
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.budget-section__reset-button:hover {
+    background: #fff5f5;
+    border-color: #e74c3c;
+    color: #e74c3c;
+    transform: translateY(-1px);
 }
 
 .budget-section__amount {
