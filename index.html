@@ -69,12 +69,30 @@
                     <button class="expenses-form__button" type="submit">Agregar gasto</button>
                 </div>
             </form>
-        </section>
 
-        <section class="section section--expense-list">
-            <h2 class="expense-list__title">Historial de gastos</h2>
-            <p class="expense-list__empty">Todavía no hay gastos registrados.</p>
-            <ul class="expense-list" aria-live="polite"></ul>
+            <div class="expense-tabs" role="tablist" aria-label="Vistas del registro de gastos">
+                <button class="expense-tabs__button is-active" type="button" role="tab" aria-selected="true" data-expense-tab="history">Registro</button>
+                <button class="expense-tabs__button" type="button" role="tab" aria-selected="false" data-expense-tab="summary">Resumen</button>
+                <button class="expense-tabs__button" type="button" role="tab" aria-selected="false" data-expense-tab="stats">Estadísticas</button>
+            </div>
+
+            <div class="expense-panels">
+                <section class="expense-panel is-active" role="tabpanel" data-expense-panel="history">
+                    <h3 class="expense-panel__title">Historial de gastos</h3>
+                    <p class="expense-list__empty">Todavía no hay gastos registrados.</p>
+                    <ul class="expense-list" aria-live="polite"></ul>
+                </section>
+
+                <section class="expense-panel" role="tabpanel" data-expense-panel="summary" hidden>
+                    <h3 class="expense-panel__title">Resumen por categoría</h3>
+                    <div class="expense-summary"></div>
+                </section>
+
+                <section class="expense-panel" role="tabpanel" data-expense-panel="stats" hidden>
+                    <h3 class="expense-panel__title">Estadísticas</h3>
+                    <div class="expense-stats"></div>
+                </section>
+            </div>
         </section>
     </main>
 </body>

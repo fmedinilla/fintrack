@@ -149,10 +149,55 @@ body {
     cursor: pointer;
 }
 
-.section--expense-list {
+.expense-tabs {
     display: flex;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+    padding: 0.35rem;
+    border-radius: 999px;
+    background: #e9ecef;
+    width: fit-content;
+    flex-wrap: wrap;
+}
+
+.expense-tabs__button {
+    border: none;
+    background: transparent;
+    color: #555;
+    font-weight: 700;
+    padding: 0.65rem 1rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.expense-tabs__button:hover {
+    transform: translateY(-1px);
+}
+
+.expense-tabs__button.is-active {
+    background: #fff;
+    color: #1f2d3d;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.expense-panels {
+    margin-top: 1rem;
+}
+
+.expense-panel {
+    display: none;
     flex-direction: column;
     gap: 1rem;
+}
+
+.expense-panel.is-active {
+    display: flex;
+}
+
+.expense-panel__title {
+    font-size: 1.05rem;
+    color: #1f2d3d;
 }
 
 .expense-list__empty {
@@ -204,5 +249,75 @@ body {
 
 .expense-item--savings .expense-item__category {
     background-color: #28a745;
+}
+
+.expense-summary,
+.expense-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.85rem;
+}
+
+.expense-summary-card,
+.expense-stat-card {
+    background: #fff;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.expense-summary-card__label,
+.expense-stat-card__label {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 700;
+}
+
+.expense-summary-card__amount,
+.expense-stat-card__amount {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #1f2d3d;
+}
+
+.expense-summary-card__meta,
+.expense-stat-card__meta {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.expense-summary-card--needs {
+    border-top: 4px solid #e74c3c;
+}
+
+.expense-summary-card--wants {
+    border-top: 4px solid #f39c12;
+}
+
+.expense-summary-card--savings {
+    border-top: 4px solid #28a745;
+}
+
+.expense-stat-card--highlight {
+    border-top: 4px solid #007bff;
+}
+
+.expense-stat-card--warning {
+    border-top: 4px solid #f39c12;
+}
+
+.expense-stat-card--success {
+    border-top: 4px solid #28a745;
+}
+
+.expense-stat-card--danger {
+    border-top: 4px solid #e74c3c;
+}
+
+.expense-stat-card--neutral {
+    border-top: 4px solid #6c757d;
 }
 
